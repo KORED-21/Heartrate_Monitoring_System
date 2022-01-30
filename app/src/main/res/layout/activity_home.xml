@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright [2022] [Eugene John, Joseph Matthew Espinas, Ramon Carmelo Y. Calimbahin, Randy Lance O. Zebroff ]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/heartRightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/heartLeftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.025"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/menuBtnGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"
+        />
+
+    <ImageView
+        android:id="@+id/hrt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/heart"
+        app:layout_constraintLeft_toLeftOf="@id/heartLeftGuideline"
+        app:layout_constraintRight_toRightOf="@+id/heartRightGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/menuBtn"
+        app:layout_constraintDimensionRatio="1:1"
+        android:layout_marginTop="15dp"
+        />
+
+    <TextView
+        android:id="@+id/heartRate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="@+id/hrt"
+        app:layout_constraintLeft_toLeftOf="@+id/hrt"
+        app:layout_constraintTop_toTopOf="@+id/hrt"
+        app:layout_constraintBottom_toBottomOf="@+id/hrt"
+        android:textSize="75sp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        />
+
+    <include
+        android:id="@+id/homeMenu"
+        layout="@layout/home_menu"
+        android:visibility="invisible"
+        />
+
+    <ImageButton
+        android:id="@+id/menuBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/menubar"
+        app:layout_constraintTop_toBottomOf="@+id/topGuideline"
+        app:layout_constraintLeft_toLeftOf="@+id/menuBtnGuideline"
+        app:layout_constraintRight_toRightOf="parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
