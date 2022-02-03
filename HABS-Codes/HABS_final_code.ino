@@ -15,19 +15,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
 
-//variable declaration
-#define USE_ARDUINO_INTERRUPTS true
-const char pulseWire = A0; //This indicates that the pulse sensor module's data line is connected to pin A0.
-const int sdToCS = 5;
-const int buzzer = 6;
-const int threshold = 525; //This value determines how sensitive the pulse sensor module will be while it is running on 5v and the user is using
-                           //his/her finger to measure pulse.
-const int lowBPM = 56;     //low bpm value
-const int highBPM = 124;   //high bpm value
-
-
-//Library inclusion
-#include <SoftwareSerial.h>
 #include <PulseSensorPlayground.h>
 #include <SPI.h>
 #include <SD.h>
@@ -96,7 +83,10 @@ void loop() {
     //change the below code to work with the BLE module and BLE functions.
     if(myBPM<lowBPM||myBPM>highBPM){   //If a person's heartrate goes above highBPM or below lowBPM,
       delay(10000);                    // wait 10 seconds
-      pulseModule.getBeatsPerMinute(); //Update myBPM variable      
+      pulseModule.getBeatsPerMinute(); //Update myBPM variable
+      itoa(myBPM, str, 10);            //Converts myBPM to a string array.
+      sendText(str);                   //Forces the AT-09 to subscribe and send data when this array is updated.
+      delay(50); //For stability, data saturation prevention, and longevity of the power supply.      
       if(myBPM<lowBPM||myBPM>highBPM){ //if the same is still true, then ring the buzzer and write to microSD card.
         bpmFile = SD.open("bpm.txt", FILE_WRITE); //opens bpm.txt on the microSD card.
         delay(100); //for stability
