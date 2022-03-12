@@ -15,11 +15,21 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
 
+//variable declaration
+#define USE_ARDUINO_INTERRUPTS true
+const char pulseWire = A0; //This indicates that the pulse sensor module's data line is connected to pin A0.
+const int sdToCS = 5;
+const int buzzer = 6;
+const int threshold = 525; //This value determines how sensitive the pulse sensor module will be while it is running on 5v and the user is using
+                           //his/her finger to measure pulse.
+const int lowBPM = 56;     //low bpm value
+const int highBPM = 124;   //high bpm value
+
 #include <PulseSensorPlayground.h>
 #include <SPI.h>
 #include <SD.h>
 
-SoftwareSerial habsSS(3,4); //RX, TX
+SoftwareSerial habsSS(9,8); //RX, TX
 PulseSensorPlayground pulseModule; //Creates an object in PulseSensorPlayground called "pulseModule".
 File bpmFile;
 
