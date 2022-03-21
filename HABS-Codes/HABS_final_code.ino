@@ -23,7 +23,7 @@ const int buzzer = 6;
 const int threshold = 525; //This value determines how sensitive the pulse sensor module will be while it is running on 5v and the user is using
                            //his/her finger to measure pulse.
 const int lowBPM = 56;     //low bpm value
-const int highBPM = 124;   //high bpm value
+const int highBPM = 104;   //high bpm value
 
 #include <PulseSensorPlayground.h>
 #include <SPI.h>
